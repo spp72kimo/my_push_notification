@@ -1,8 +1,11 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'firebase_options.dart';
+import 'Pages/Riverpod/RiverpodPage.dart';
 import '/models/notificationModel.dart';
 import 'components/notificationBadge.dart';
 
@@ -18,7 +21,8 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  runApp(const MyApp());
+
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -29,8 +33,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return OverlaySupport(
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
+          // fontFamily: 'Cubic',
+          fontFamily: 'TaipeiSansTCBeta',
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
@@ -151,8 +158,13 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               const Text(
-                "App Capture",
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                "App Capture，這是繁體中文",
+                style: TextStyle(
+                  // fontFamily: 'TaipeiSansTCBeta',
+                  // fontFamily: 'Cubic',
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -192,6 +204,19 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     )
                   : Container(),
+              const SizedBox(height: 40),
+              ElevatedButton(
+                  child: const Text(
+                    "Riverpod Demo",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const RiverpodPage()),
+                    );
+                  })
             ],
           ),
         ),
