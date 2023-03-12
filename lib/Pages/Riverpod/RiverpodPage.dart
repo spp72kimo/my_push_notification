@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_push_notification/Pages/Riverpod/practicePage.dart';
 
 final counterProvider = StateNotifierProvider((ref) => Counter());
 
@@ -18,7 +19,7 @@ class RiverpodPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Counter App'),
+        title: const Text('Counter App'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: Center(
@@ -37,6 +38,14 @@ class RiverpodPage extends ConsumerWidget {
                 );
               },
             ),
+            ElevatedButton(
+              onPressed: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => PracticePage())),
+              child: const Text(
+                "自我練習",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            )
           ],
         ),
       ),

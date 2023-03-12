@@ -6,6 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'firebase_options.dart';
 import 'Pages/Riverpod/RiverpodPage.dart';
+import 'Pages/connectivity_plus/connectivityPage.dart';
 import '/models/notificationModel.dart';
 import 'components/notificationBadge.dart';
 
@@ -215,6 +216,18 @@ class _MyHomePageState extends State<MyHomePage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => const RiverpodPage()),
+                    );
+                  }),
+              ElevatedButton(
+                  child: const Text(
+                    "Connectivity_plus Demo",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ConnectivityPage()),
                     );
                   })
             ],
