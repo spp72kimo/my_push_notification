@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:my_push_notification/Pages/Animated/AnimatedPage.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'firebase_options.dart';
 import 'Pages/Riverpod/RiverpodPage.dart';
@@ -228,6 +229,18 @@ class _MyHomePageState extends State<MyHomePage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => const ConnectivityPage()),
+                    );
+                  }),
+              ElevatedButton(
+                  child: const Text(
+                    "Animated Demo",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AnimatedPage()),
                     );
                   })
             ],
